@@ -48,5 +48,17 @@ void main() {
       )),
     );
   });
+
+  test('should throw exception with all negative numbers', () {
+    final calculator = StringCalculator();
+    expect(
+      () => calculator.add('-1,2,-3,4,-5'),
+      throwsA(isA<Exception>().having(
+        (e) => e.toString(),
+        'message',
+        contains('negative numbers not allowed -1, -3, -5'),
+      )),
+    );
+  });
 }
 

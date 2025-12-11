@@ -21,7 +21,8 @@ class StringCalculator {
     
     final negativeNumbers = numbersList.where((n) => n < 0).toList();
     if (negativeNumbers.isNotEmpty) {
-      throw Exception('negative numbers not allowed ${negativeNumbers.first}');
+      final negativesList = negativeNumbers.join(', ');
+      throw Exception('negative numbers not allowed $negativesList');
     }
     
     return numbersList.reduce((a, b) => a + b);
