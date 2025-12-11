@@ -21,5 +21,15 @@ void main() {
     final calculator = StringCalculator();
     expect(calculator.add('1,2,3,4,5'), 15);
   });
+
+  test('should handle newlines as separators', () {
+    final calculator = StringCalculator();
+    expect(calculator.add('1\n2\n3'), 6);
+  });
+
+  test('should handle mixed newlines and commas', () {
+    final calculator = StringCalculator();
+    expect(calculator.add('1\n2,3'), 6);
+  });
 }
 

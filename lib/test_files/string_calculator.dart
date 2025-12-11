@@ -4,7 +4,7 @@ class StringCalculator {
       return 0;
     }
     
-    final parts = numbers.split(',');
+    final parts = numbers.split(RegExp(r'[,\n]'));
     return parts.map((part) => int.parse(part)).reduce((a, b) => a + b);
   }
 }
