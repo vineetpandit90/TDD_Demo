@@ -17,7 +17,14 @@ class StringCalculator {
     }
     
     final parts = numbersToParse.split(RegExp(delimiterPattern));
-    return parts.map((part) => int.parse(part)).reduce((a, b) => a + b);
+    final numbersList = parts.map((part) => int.parse(part)).toList();
+    
+    final negativeNumbers = numbersList.where((n) => n < 0).toList();
+    if (negativeNumbers.isNotEmpty) {
+      throw Exception('negative numbers not allowed ${negativeNumbers.first}');
+    }
+    
+    return numbersList.reduce((a, b) => a + b);
   }
 }
 

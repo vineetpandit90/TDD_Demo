@@ -36,5 +36,17 @@ void main() {
     final calculator = StringCalculator();
     expect(calculator.add('//;\n1;2'), 3);
   });
+
+  test('should throw exception for negative number', () {
+    final calculator = StringCalculator();
+    expect(
+      () => calculator.add('-1'),
+      throwsA(isA<Exception>().having(
+        (e) => e.toString(),
+        'message',
+        contains('negative numbers not allowed -1'),
+      )),
+    );
+  });
 }
 
